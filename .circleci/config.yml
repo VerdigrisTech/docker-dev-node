@@ -21,6 +21,8 @@ jobs:
           extra_build_args: "--build-arg NODE_MAJOR_VERSION=<< parameters.node-version >>"
           image: verdigristech/dev-node
           tag: << parameters.node-version >>
+      - docker/push:
+          image: verdigristech/dev-node
 
 workflows:
   version: 2
