@@ -1,0 +1,35 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@2.1
+
+jobs:
+  build:
+    parameters:
+      node-version:
+        description: Node.js version
+        type: string
+    executor: docker/docker
+    steps:
+      - checkout
+      - docker/check:
+          docker-username: DOCKER_USERNAME
+          docker-password: DOCKER_PASSWORD
+      - docker/build:
+          extra_build_args: "--build-args NODE_MAJOR_VERSION=<< parameters.node-version >>"
+          tag: << parameters.node-version >>
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - docker/hadolint:
+          executor-class: medium
+          ignore-rules: DL3059,DL4006
+  publish:
+    jobs:
+      - build:
+          context: dockerhub
+          matrix:
+            parameters:
+              node-version: ["12", "14", "16"]
