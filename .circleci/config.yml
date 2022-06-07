@@ -23,6 +23,7 @@ jobs:
           tag: << parameters.node-version >>
       - docker/push:
           image: verdigristech/dev-node
+          tag: << parameters.node-version >>
 
 workflows:
   version: 2
