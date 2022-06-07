@@ -16,7 +16,7 @@ jobs:
           docker-username: DOCKER_USERNAME
           docker-password: DOCKER_PASSWORD
       - docker/build:
-          extra_build_args: "--build-args NODE_MAJOR_VERSION=<< parameters.node-version >>"
+          extra_build_args: "--build-arg NODE_MAJOR_VERSION=<< parameters.node-version >>"
           image: verdigristech/dev-node
           tag: << parameters.node-version >>
 
