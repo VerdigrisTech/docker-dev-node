@@ -9,9 +9,10 @@ Node.js development environment.
 
 ## Supported tags
 
-- 12, lts-erbium
-- 14, lts-fermium
-- 16, lts-gallium
+- 12, erbium
+- 14, fermium
+- 16, gallium
+- 18
 
 ---
 
