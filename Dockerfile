@@ -26,7 +26,7 @@ RUN case "$(dpkg --print-architecture)" in \
     i386) arch="x86";; \
     *) arch="$(dpkg --print-architecture)";; \
   esac; \
-  version=$(cat index.json | jq -r "map(select(.version | startswith(\"v${NODE_MAJOR_VERSION}.\")))[0].version"); \
+  version=$(jq -r "map(select(.version | startswith(\"v${NODE_MAJOR_VERSION}.\")))[0].version" index.json); \
   package="node-${version}-linux-${arch}"; \
   # Verify the Node.js binary before expanding the file
   curl -sSLO "https://nodejs.org/dist/${version}/SHASUMS256.txt.sig"; \
