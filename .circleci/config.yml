@@ -17,13 +17,20 @@ jobs:
       - docker/check:
           docker-username: DOCKER_USERNAME
           docker-password: DOCKER_PASSWORD
+      - run:
+          name: Get latest version and save to job environment variables
+          command: |
+            full_version=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].version")
+            major_minor_version=${full_version%.*}
+            echo "export NODE_VERSION=${full_version}" >> $BASH_ENV
+            echo "export NODE_VERSION_MINOR=${major_minor_version}" >> $BASH_ENV
       - docker/build:
           extra_build_args: "--build-arg NODE_MAJOR_VERSION=<< parameters.node-version >>"
           image: verdigristech/dev-node
-          tag: << parameters.node-version >>
+          tag: $NODE_VERSION,$NODE_VERSION_MINOR,<< parameters.node-version >>
       - docker/push:
           image: verdigristech/dev-node
-          tag: << parameters.node-version >>
+          tag: $NODE_VERSION,$NODE_VERSION_MINOR,<< parameters.node-version >>
 
 workflows:
   version: 2
