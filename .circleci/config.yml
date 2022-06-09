@@ -20,7 +20,11 @@ jobs:
       - run:
           name: Get latest version and save to job environment variables
           command: |
-            full_version=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].version")
+            # Get the latest full version
+            full_version_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].version")
+            # Drop the 'v' in front of the version string
+            full_version=${full_version_raw:1}
+            # Drop the patch version
             major_minor_version=${full_version%.*}
             echo "export NODE_VERSION=${full_version}" >> $BASH_ENV
             echo "export NODE_VERSION_MINOR=${major_minor_version}" >> $BASH_ENV
