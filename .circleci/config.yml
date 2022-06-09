@@ -31,7 +31,7 @@ jobs:
             major_minor_version=${full_version%.*}
             echo "export NODE_VERSION=${full_version}" >> $BASH_ENV
             echo "export NODE_VERSION_MINOR=${major_minor_version}" >> $BASH_ENV
-            echo "export LTS=${lts:-$NODE_VERSION}" >> $BASH_ENV
+            echo "export LTS=${lts:-$full_version}" >> $BASH_ENV
       - docker/build:
           extra_build_args: "--build-arg NODE_MAJOR_VERSION=<< parameters.node-version >>"
           image: verdigristech/dev-node
