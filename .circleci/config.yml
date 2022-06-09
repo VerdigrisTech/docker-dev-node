@@ -52,4 +52,4 @@ workflows:
           context: dockerhub
           matrix:
             parameters:
-              node-version: ["12", "14", "16"]
+              node-version: ["12", "14", "16", "18"]
