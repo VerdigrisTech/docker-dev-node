@@ -38,6 +38,16 @@ jobs:
       - docker/push:
           image: verdigristech/dev-node
           tag: $NODE_VERSION,$NODE_VERSION_MINOR,<< parameters.node-version >>,$LTS
+  update-description:
+    executor: docker/docker
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - docker/update-description:
+          docker-username: DOCKER_USERNAME
+          docker-password: DOCKER_PASSWORD
+          image: verdigristech/dev-node
 
 workflows:
   version: 2
@@ -53,3 +63,7 @@ workflows:
           matrix:
             parameters:
               node-version: ["12", "14", "16", "18"]
+      - update-description:
+          context: dockerhub
+          requires:
+            - build
