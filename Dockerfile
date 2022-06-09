@@ -27,16 +27,16 @@ RUN case "$(dpkg --print-architecture)" in \
     *) arch="$(dpkg --print-architecture)";; \
   esac; \
   version=$(cat index.json | jq -r "map(select(.version | startswith(\"v${NODE_MAJOR_VERSION}.\")))[0].version"); \
-  package=node-${version}-linux-${arch}; \
+  package="node-${version}-linux-${arch}"; \
   # Verify the Node.js binary before expanding the file
   curl -sSLO "https://nodejs.org/dist/${version}/SHASUMS256.txt.sig"; \
   curl -sSLO "https://nodejs.org/dist/${version}/SHASUMS256.txt"; \
   gpg --verify SHASUMS256.txt.sig SHASUMS256.txt; \
   curl -sSLO "https://nodejs.org/dist/${version}/${package}.tar.xz"; \
-  grep ${package}.tar.xz SHASUMS256.txt | sha256sum -c - \
+  grep "${package}.tar.xz" SHASUMS256.txt | sha256sum -c - \
   # Extract Node.js tarball
-  && tar xvf ${package}.tar.xz \
-  && cp -R ./${package}/* /usr/local
+  && tar xvf "${package}.tar.xz" \
+  && cp -R "./${package}/*" /usr/local
 
 FROM verdigristech/dev-base:bullseye
 
