@@ -23,7 +23,7 @@ jobs:
             # Get the latest full version
             full_version_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].version")
             # Get the LTS codename
-            lts_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].lts | ascii_downcase")
+            lts_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].lts | tostring | ascii_downcase")
             # Drop the 'v' in front of the version string
             full_version=${full_version_raw:1}
             # Drop the patch version
