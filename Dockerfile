@@ -36,7 +36,7 @@ RUN case "$(dpkg --print-architecture)" in \
   grep "${package}.tar.xz" SHASUMS256.txt | sha256sum -c - \
   # Extract Node.js tarball
   && tar xvf "${package}.tar.xz" \
-  && cp -R "./${package}/*" /usr/local
+  && cp -R ./"${package}"/* /usr/local
 
 FROM verdigristech/dev-base:bullseye
 
