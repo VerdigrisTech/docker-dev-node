@@ -21,7 +21,7 @@ jobs:
           name: Get latest version and save to job environment variables
           command: |
             # Get the latest full version
-            full_version_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].version")
+            full_version_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.version | startswith(\"v<< parameters.node-version >>.\")))[0].version")
             # Get the LTS codename
             lts_raw=$(curl -sSL https://nodejs.org/dist/index.json | jq -r "map(select(.lts and (.version | startswith(\"v<< parameters.node-version >>.\"))))[0].lts | tostring | ascii_downcase")
             [ ! "$lts_raw" = "null" ] && lts=$lts_raw || true
