@@ -1,5 +1,5 @@
 FROM bitnami/minideb:bullseye AS builder
-ARG NODE_MAJOR_VERSION=16
+ARG NODE_MAJOR_VERSION=18
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /tmp

@@ -12,7 +12,7 @@ Node.js development environment.
 - 12, erbium
 - 14, fermium
 - 16, gallium
-- 18
+- 18, hydrogen
 
 ---
 
