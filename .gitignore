@@ -1,0 +1,17 @@
+# Directory preferences for macOS, Linux, and Windows
+.DS_Store
+.directory
+[Dd]esktop.ini
+
+# Thumbnails for macOS, and Windows
+._*
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Trash/Recycle Bin for macOS, Linux, and Windows
+.Trash-*
+.Trashes
+$RECYCLE.BIN/
+Network Trash Folder
