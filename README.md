@@ -24,7 +24,7 @@ Node.js development environment.
 
 ---
 
-Copyright © 2022-2023 [Verdigris Technologies, Inc][verdigris]. All rights reserved.
+Copyright © 2022-2024 [Verdigris Technologies, Inc][verdigris]. All rights reserved.
 
 [shield-docker-downloads]: https://img.shields.io/docker/pulls/verdigristech/dev-node?style=flat-square
 [shield-dockersize-node-16]: https://img.shields.io/docker/image-size/verdigristech/dev-node/gallium?color=red&label=16.x/gallium&style=flat-square
