@@ -1,4 +1,4 @@
-FROM bitnami/minideb:bullseye AS builder
+FROM bitnami/minideb:bookworm AS builder
 ARG NODE_MAJOR_VERSION=18
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -38,6 +38,6 @@ RUN case "$(dpkg --print-architecture)" in \
   && tar xvf "${package}.tar.xz" \
   && cp -R ./"${package}"/* /usr/local
 
-FROM verdigristech/dev-base:bullseye
+FROM verdigristech/dev-base:bookworm
 
 COPY --from=builder /usr/local/ /usr/local/
