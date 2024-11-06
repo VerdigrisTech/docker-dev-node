@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  docker: circleci/docker@2.1
+  docker: circleci/docker@2.8
 
 jobs:
   build:
@@ -51,7 +51,6 @@ jobs:
           image: verdigristech/dev-node
 
 workflows:
-  version: 2
   lint:
     jobs:
       - docker/hadolint:
@@ -63,7 +62,7 @@ workflows:
           context: dockerhub
           matrix:
             parameters:
-              node-version: ["12", "14", "16", "18"]
+              node-version: ["16", "18", "20", "22"]
       - update-description:
           context: dockerhub
           requires:
