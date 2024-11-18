@@ -1,5 +1,6 @@
 FROM bitnami/minideb:bookworm AS builder
-ARG NODE_MAJOR_VERSION=18
+ARG NODE_MAJOR_VERSION=22
+ARG PNPM_VERSION=latest
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /tmp
@@ -41,3 +42,6 @@ RUN case "$(dpkg --print-architecture)" in \
 FROM verdigristech/dev-base:bookworm
 
 COPY --from=builder /usr/local/ /usr/local/
+
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+RUN sudo sh -c "corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate"
