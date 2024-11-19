@@ -64,7 +64,7 @@ workflows:
           context: dockerhub
           matrix:
             parameters:
-              node-version: ["16", "18", "20", "22"]
+              node-version: ["18", "20", "22"]
       - update-description:
           context: dockerhub
           requires:

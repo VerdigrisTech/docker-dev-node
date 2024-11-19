@@ -1,7 +1,6 @@
 # docker-dev-node
 
 ![Downloads][shield-docker-downloads]
-![v16 Gallium][shield-dockersize-node-16]
 ![v18 Hydrogen][shield-dockersize-node-18]
 ![v20 Iron][shield-dockersize-node-20]
 ![v22 Jod][shield-dockersize-node-22]
@@ -27,7 +26,6 @@ Node.js development environment.
 Copyright © 2022-2024 [Verdigris Technologies, Inc][verdigris]. All rights reserved.
 
 [shield-docker-downloads]: https://img.shields.io/docker/pulls/verdigristech/dev-node?style=flat-square
-[shield-dockersize-node-16]: https://img.shields.io/docker/image-size/verdigristech/dev-node/gallium?color=red&label=16.x/gallium&style=flat-square
 [shield-dockersize-node-18]: https://img.shields.io/docker/image-size/verdigristech/dev-node/hydrogen?color=lightgray&&label=18.x/hydrogen&style=flat-square
 [shield-dockersize-node-20]: https://img.shields.io/docker/image-size/verdigristech/dev-node/iron?label=20.x/iron&style=flat-square
 [shield-dockersize-node-22]: https://img.shields.io/docker/image-size/verdigristech/dev-node/jod?color=green&label=22.x/jod&style=flat-square
