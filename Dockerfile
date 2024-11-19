@@ -44,4 +44,6 @@ FROM verdigristech/dev-base:bookworm
 COPY --from=builder /usr/local/ /usr/local/
 
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-RUN sudo sh -c "corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate"
+USER root
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
+USER verdigrisian
