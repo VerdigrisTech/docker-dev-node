@@ -45,5 +45,5 @@ COPY --from=builder /usr/local/ /usr/local/
 
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 USER root
-RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
+RUN corepack enable && corepack prepare "pnpm@${PNPM_VERSION}" --activate
 USER verdigrisian
