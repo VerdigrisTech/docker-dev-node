@@ -1,5 +1,5 @@
 FROM bitnami/minideb:bookworm AS builder
-ARG NODE_MAJOR_VERSION=22
+ARG NODE_MAJOR_VERSION=24
 ARG PNPM_VERSION=latest
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
